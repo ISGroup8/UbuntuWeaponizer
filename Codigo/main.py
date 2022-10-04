@@ -22,9 +22,9 @@ def fun2():
 
 class Aplicacion:
     def __init__(self):
-        self.root=tk.Tk()
+        self.root = tk.Tk()
         self.root.title("Ubuntu Weaponizer")
-        self.canvas1=tk.Canvas(self.root, width=600, height=400, background="lavender")
+        self.canvas1 = tk.Canvas(self.root, width=600, height=400, background="lavender")
         self.canvas1.grid(column=0, row=0)
         self.canvas1.create_line(100, 100, 100,1000, fill="black")
 
@@ -32,7 +32,7 @@ class Aplicacion:
         #btn.pack(side=tk.LEFT)
         btn = tk.Button (self.root, text = "Func 2", command=fun2)
         #btn.pack(side=tk.LEFT)
-        self.canvas1=tk.Canvas(self.root, width=600, height=400, background="lavender")
+        self.canvas1 = tk.Canvas(self.root, width=600, height=400, background="lavender")
         self.canvas1.create_line(0, 0, 100,50, fill="white")
         self.root.mainloop()
 
