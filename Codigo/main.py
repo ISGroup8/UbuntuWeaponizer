@@ -12,6 +12,8 @@ from tkinter.filedialog import askdirectory
 from tkinter import ttk
 import sys
 
+def prueba():
+    print("marcelino la chupa")
 
 
 def fun1():
@@ -35,6 +37,8 @@ class Aplicacion:
         self.canvas1 = tk.Canvas(self.root, width=600, height=400, background="lavender")
         self.canvas1.create_line(0, 0, 100,50, fill="white")
         self.root.mainloop()
+
+        prueba()
 
 
 aplicacion1=Aplicacion()
