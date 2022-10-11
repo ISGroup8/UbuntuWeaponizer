@@ -12,6 +12,8 @@ from tkinter.filedialog import askdirectory
 from tkinter import ttk
 import sys
 
+def prueba2():
+    print("A ver quien tiene razon")
 
 
 def fun1():
@@ -37,5 +39,6 @@ class Aplicacion:
         self.root.mainloop()
 
 
+        prueba2()
 aplicacion1=Aplicacion()
 
