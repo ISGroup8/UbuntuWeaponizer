@@ -45,6 +45,7 @@ tree.insert(id3, "end", "dir7", text="App 2", values=("Desarrollador 2", "430Mb"
 tree.insert(id3, "end", "dir8", text="App 3", values=("Desarrollador 3", "215Mb"))
 tree.pack()  # Especifique la orientación
 btn = Button (f1,text="Install", command= install)
+btn.pack()
 
 lab1 = Label(f2, text="Choose what you want to update:")
 lab1.pack()
