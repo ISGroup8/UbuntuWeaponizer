@@ -15,6 +15,7 @@ def install():
 
 root = tk.Tk()
 root.title("Ubuntu Weaponizer")
+root.tk.call('wm', 'iconphoto', root._w, tk.PhotoImage(file='../assets/logo.png'))
 lbl = Label(text="Welcome to the Weaponizer :)")
 lbl.pack()
 n = ttk.Notebook(root, width=600, height=400)
@@ -65,5 +66,4 @@ tree.insert(id3, "end", "dir7", text="App 2", values=("Desarrollador 2", "430Mb"
 tree.insert(id3, "end", "dir8", text="App 3", values=("Desarrollador 3", "215Mb"))
 tree.pack()  # Especifique la orientación
 root.mainloop()
-
 
