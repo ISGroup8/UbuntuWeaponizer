@@ -6,9 +6,10 @@ To install Ubuntu Weaponizer you should use the next instructions:
 ```bash
 # Open a terminal with ctrl + alt + t
 
-sudo apt install python3 python3-pip git
+sudo apt install python3 python3-pip git python3-pandas python3-tkinter
 git clone https://github.com/ISGroup8/UbuntuWeaponizer.git
 cd UbuntuWeaponizer
+pip install -r requirements.txt
 chmod +x launch.sh && ./launch.sh
 # And you are ready to go
 ```

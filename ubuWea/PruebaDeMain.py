@@ -4,7 +4,7 @@ class App:
 
     def __init__(self, root):
         self.root = root
-	self.root.title("Ubuntu Weaponizer")
+        self.root.title("Ubuntu Weaponizer")
         self.root.minsize(1000,400)
         self.root.maxsize(1000, 400)
         self.frame = tk.Frame(root)
