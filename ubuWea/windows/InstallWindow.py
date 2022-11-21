@@ -38,6 +38,7 @@ class InstallWindow (tk.Toplevel):
         normalF = Text(font=('DejaVu Sans Mono', 10))
         specialF = Text(font=('DejaVu Sans Mono', 15, "bold"))
 
+
         # List of apps
         Label(self, text="--Categories--", font=specialF, bg="navajo white").pack(pady=10)
         phising = ['SET', 'SocialPhish', 'Hidden-Eye', 'ShellPhish', 'PyPhisher']
@@ -47,12 +48,14 @@ class InstallWindow (tk.Toplevel):
         pwn = ['Null']
         categories = [('Phising', phising), ('Web', Web), ('Forense', Forense), ('OSINT', osint), ('PWN', pwn)]
 
+        # Variables de posición de las apps
         l = 60
         k = 330
         m = 60
         n = 60
         o = True
 
+        # Poner las apps y los checkbox
         for item in categories:
             if (o):
                 m += 40
@@ -63,12 +66,11 @@ class InstallWindow (tk.Toplevel):
                 Label(self, text=item[0], font=specialF, bg="navajo white").place(x=k, y=n)
                 n += 20
             for subItem in item[1]:
-
-                self.checkbox = Checkbox(self, text= subItem ,
-                                             command=lambda: self.check_clicked(subItem) )
+                self.checkbox = Checkbox(self, text= subItem ,command=lambda: self.check_clicked(subItem) )
                 if (o):
                     m += 25
                     self.checkbox.place(x=l, y=m)
+
                 else:
                     n += 25
                     self.checkbox.place(x=k, y=n)
