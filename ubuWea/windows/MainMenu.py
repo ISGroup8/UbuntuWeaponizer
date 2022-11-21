@@ -29,7 +29,7 @@ class App:
 
         # First row
         botInstall = tk.Button(self.root, text= "Install", width= 15, height= 4,bg="LightSkyBlue2",
-                               font=('DejaVu Sans Mono',15), command=lambda: installWindow(root) )
+                               font=('DejaVu Sans Mono',15), command=lambda: InstallWindow(root) )
         botUpt = tk.Button( text="Update", width= 15, height= 4, bg="LightSkyBlue2",
                            font=('DejaVu Sans Mono',15), command= updateWindow)
         botInstall.place(x= 50, y= 60)
