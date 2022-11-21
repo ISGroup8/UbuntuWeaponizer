@@ -17,47 +17,51 @@ def installWindow(root):
                     relief="flat", # relieve root
                     bd=5)
 
+    #Añadir un scroll
+    #scroll = Scrollbar (frame)
+    #scroll.pack(side=RIGHT, fill = Y)
+    #scroll.grid(in_=frame, side=RIGHT)
+
     Label(frame,text=" Install the things you want :)",bg="LightSkyBlue2", font=('DejaVu Sans Mono', 15))\
         .pack(side=TOP, pady=10)
 
     #List of apps
     normalF = Text (font=('DejaVu Sans Mono', 10))
     specialF = Text (font=('DejaVu Sans Mono', 15, "bold"))
-    Label(frame, text="--Categories--", font=specialF, bg="navajo white").pack(side=LEFT, pady = 20)
-    listbox = Listbox(frame)
-    listbox.place(x= 20 , y = 70)
+    Label(frame, text="--Categories--", font=specialF, bg="navajo white").pack( pady = 10)
 
     phising = ['SET', 'SocialPhish', 'Hidden-Eye', 'ShellPhish', 'PyPhisher']
     Web = ['Nmap', 'BurpSuite', 'FFUF', 'RustScan', 'WPSCAN']
     Forense = ['Autopsy', 'Metagoofil', 'Exiftool', 'Wireshark']
-    osint = []
-    pwn = []
+    osint = ['Null']
+    pwn = ['Null']
     categories = [('Phising',phising), ('Web',Web),('Forense',Forense),('OSINT',osint),('PWN',pwn)]
 
+    l = 40
+    k = 300
+    m = 60
+    n = 60
+    o = True
+    frame.checkbox_value = tk.BooleanVar(frame)
     for item in categories:
-        Label(frame, text=item[0], font=specialF, bg="navajo white").pack(side=LEFT, pady=20)
-        listbox.insert(END, item)
+        if (o):
+            m += 40
+            Label(frame, text=item[0], font=specialF, bg="navajo white").place(x=l,y=m)
+            m += 20
+        else:
+            n += 40
+            Label(frame, text=item[0], font=specialF, bg="navajo white").place(x=k, y=n)
+            n += 20
         for subItem in item[1]:
-             Checkbutton(frame, text=subItem)
 
-    def onselect(evt):
-        # Note here that Tkinter passes an event object to onselect()
-        w = evt.widget
-        x = 0
-        index = int(w.curselection()[0])
-        value = w.get(index)
-        print('You selected item %d: "%s"' % (index, value))
-
-        for y in enable:
-            for item in list_for_listbox:
-                globals()["checkbox{}{}".format(item, y)].place_forget()
-            globals()["checkbox{}{}".format(value, y)].place(x=300, y=0 + x)
-            x += 50
-
-    listbox.bind('<<ListboxSelect>>', onselect)
-
-    print(enable)
-
+            frame.checkbox = ttk.Checkbutton(frame, text=subItem, variable= frame.checkbox_value)
+            if (o):
+                m += 20
+                frame.checkbox.place(x=l,y=m)
+            else:
+                n += 20
+                frame.checkbox.place(x=k, y=n)
+        o = not o
 
 
     botExit = tk.Button(frame, text="Exit", width=10, bg="navajo white",
