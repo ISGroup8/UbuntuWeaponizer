@@ -116,6 +116,7 @@ function Metagoofil {
     sudo -u $user 'pip3 install -r requirements.txt'
 }
 
+
 function Autopsy {
     wget https://github.com/sleuthkit/autopsy/releases/download/autopsy-4.19.2/autopsy-4.19.2.zip
     wget https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.11.1/sleuthkit-java_4.11.1-1_amd64.deb
