@@ -14,7 +14,8 @@ class App:
     def __init__(self, root):
         self.root = root
         self.root.title("Ubuntu Weaponizer")
-        self.root.tk.call('wm', 'iconphoto', root._w, tk.PhotoImage(file='../assets/logo.png'))
+        icon = PhotoImage(file='../assets/logo.png')
+        self.root.iconphoto(True, icon)
         Label(text="Welcome to the Weaponizer :)", bg="navajo white", font=('DejaVu Sans Mono', 15)) \
             .pack(side=TOP, pady=10)
 
@@ -31,21 +32,21 @@ class App:
         botInstall = tk.Button(self.root, text= "Install", width= 15, height= 4,bg="LightSkyBlue2",
                                font=('DejaVu Sans Mono',15), command=lambda: InstallWindow(root) )
         botUpt = tk.Button( text="Update", width= 15, height= 4, bg="LightSkyBlue2",
-                           font=('DejaVu Sans Mono',15), command= updateWindow)
+                           font=('DejaVu Sans Mono',15), command=lambda : UpdateWindow(root))
         botInstall.place(x= 50, y= 60)
         botUpt.place(x = 250, y = 60)
 
         # Second row
         botDesInst = tk.Button(self.root, text="Uninstall", width= 15, height= 4, bg="LightSkyBlue2",
-                               font=('DejaVu Sans Mono',15), command= uninstallWindow)
+                               font=('DejaVu Sans Mono',15), command=lambda : UninstallWindow(root))
         botInfo = tk.Button(self.root, text="Show apps", width= 15, height= 4, bg="LightSkyBlue2",
-                            font=('DejaVu Sans Mono',15), command= infoWindow)
+                            font=('DejaVu Sans Mono',15), command=lambda: InfoWindow(root))
         botDesInst.place(x= 50, y= 190)
         botInfo.place(x= 250, y= 190)
 
         # Apart
         botContact = tk.Button(self.root, text="Contac us", width=10, bg="LightSkyBlue2",
-                               font=('DejaVu Sans Mono', 10), command= contactWindow)
+                               font=('DejaVu Sans Mono', 10), command=lambda : ContactWindow(root))
         botContact.place (x = 390, y = 315)
 
         #botExit = tk.Button(self.root, text="Exit", width=10,

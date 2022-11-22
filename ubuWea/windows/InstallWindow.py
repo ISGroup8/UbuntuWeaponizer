@@ -1,8 +1,7 @@
 import tkinter
-from tkinter import  ttk
+from tkinter import ttk, messagebox
 import tkinter as tk
 from tkinter import *
-
 
 
 class Checkbox(ttk.Checkbutton):
@@ -20,12 +19,13 @@ class Checkbox(ttk.Checkbutton):
     def uncheck(self):
         self.variable.set(False)
 
+
 class InstallWindow (tk.Toplevel):
     def __init__(self, root):
         super().__init__(root)
         self.minsize(500,550)
         self.title("Ubuntu Weaponizer")
-        self.tk.call('wm', 'iconphoto', root._w, tk.PhotoImage(file='../assets/logo.png'))
+
         self.configure(bg="LightSkyBlue2",
                         cursor="target",  # cursor
                         relief="flat",  # relieve root
@@ -41,11 +41,12 @@ class InstallWindow (tk.Toplevel):
 
         # List of apps
         Label(self, text="--Categories--", font=specialF, bg="navajo white").pack(pady=10)
+        #phising = {'SET': False, 'SocialPhish':False, 'Hidden-Eye':False, 'ShellPhish':False, 'PyPhisher':False}
         phising = ['SET', 'SocialPhish', 'Hidden-Eye', 'ShellPhish', 'PyPhisher']
         Web = ['Nmap', 'BurpSuite', 'FFUF', 'RustScan', 'WPSCAN']
         Forense = ['Autopsy', 'Metagoofil', 'Exiftool', 'Wireshark']
-        osint = ['Null']
-        pwn = ['Null']
+        osint = ['Void']
+        pwn = ['Void']
         categories = [('Phising', phising), ('Web', Web), ('Forense', Forense), ('OSINT', osint), ('PWN', pwn)]
 
         # Variables de posición de las apps
@@ -66,11 +67,12 @@ class InstallWindow (tk.Toplevel):
                 Label(self, text=item[0], font=specialF, bg="navajo white").place(x=k, y=n)
                 n += 20
             for subItem in item[1]:
-                self.checkbox = Checkbox(self, text= subItem ,command=lambda: self.check_clicked(subItem) )
+                self.checkbox = Checkbox (self, text= subItem
+                                            ,command=lambda: self.check_clicked() )
+
                 if (o):
                     m += 25
                     self.checkbox.place(x=l, y=m)
-
                 else:
                     n += 25
                     self.checkbox.place(x=k, y=n)
@@ -81,7 +83,22 @@ class InstallWindow (tk.Toplevel):
                             font=('DejaVu Sans Mono', 10), command=self.destroy)
         botExit.pack(side=BOTTOM, pady=10)
 
-    def check_clicked(self, name):
-        print( name + " instalado " + str(self.checkbox.checked()) )
+    def check_clicked(self):
+        window = tk.Toplevel(self)
+        window.minsize(200,100)
+        window.title("")
+        window.configure(bg="navajo white",
+                       cursor="target",  # cursor
+                       relief="flat",  # relieve root
+                       bd=5)
+        Label(window,text="-- App installed --", font=('DejaVu Sans Mono', 15, "bold"),
+              bg="LightSkyBlue2").pack(side=TOP, pady = 25)
+
+        window.after(2000, lambda :window.destroy())
+
+
+
+
+
 
 
