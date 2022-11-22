@@ -18,7 +18,7 @@ class InfoWindow(tk.Toplevel):
                        relief="flat",  # relieve root
                        bd=5)
 
-        Label(self, text=" Install the things you want :)", bg="LightSkyBlue2", font=('DejaVu Sans Mono', 15)) \
+        Label(self, text=" Curious about the apps we offer uwu)?", bg="LightSkyBlue2", font=('DejaVu Sans Mono', 15)) \
             .pack(side=TOP, pady=10)
 
         normalF = Text(font=('DejaVu Sans Mono', 10))
@@ -54,11 +54,10 @@ class InfoWindow(tk.Toplevel):
             for subItem in item[1]:
                 if (o):
                     m += 25
-                    Label(self, text=subItem, font= normalF, bg="navajo white").place(x=l, y = m)
+                    Label(self, text=subItem, font= normalF).place(x=l, y = m)
                 else:
                     n += 25
-                    Label(self, text=subItem, font= normalF, bg="navajo white").place(x=l, y = n)
-
+                    Label(self, text=subItem, font= normalF).place(x=k, y = n)
             o = not o
 
         botExit = tk.Button(self, text="Exit", width=10, bg="navajo white",
