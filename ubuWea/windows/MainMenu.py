@@ -12,6 +12,20 @@ from ubuWea.windows.ContactUsWindow import *
 class App:
 
     def __init__(self, root):
+        global valueArray, categories, phising, Web, Forence, osint, pwn
+
+        valueArray = []
+        for i in range(20):
+            valueArray.append(BooleanVar())
+
+        phising = [('SET', valueArray[0]), ('SocialPhish', valueArray[1]), ('Hidden-Eye', valueArray[2]), ('ShellPhish', valueArray[3]),
+                   ('PyPhisher', valueArray[4])]
+        Web = [('Nmap', valueArray[5]), ('BurpSuite', valueArray[6]), ('FFUF', valueArray[7])]
+        Forense = [('Metagoofil', valueArray[8]), ('Exiftool', valueArray[9]), ('Wireshark', valueArray[10])]
+        osint = [('Void', valueArray[11])]
+        pwn = [('Void', valueArray[12])]
+        categories = [('Phising', phising), ('Web', Web), ('Forense', Forense), ('OSINT', osint), ('PWN', pwn)]
+
         self.root = root
         self.root.title("Ubuntu Weaponizer")
         icon = PhotoImage(file='../assets/logo.png')
@@ -27,10 +41,9 @@ class App:
                             relief="flat", # relieve root
                             bd=5) #borde en px
 
-
         # First row
         botInstall = tk.Button(self.root, text= "Install", width= 15, height= 4,bg="LightSkyBlue2",
-                               font=('DejaVu Sans Mono',15), command=lambda: InstallWindow(root) )
+                               font=('DejaVu Sans Mono',15), command=lambda: InstallWindow(root,categories) )
         botUpt = tk.Button( text="Update", width= 15, height= 4, bg="LightSkyBlue2",
                            font=('DejaVu Sans Mono',15), command=lambda : UpdateWindow(root))
         botInstall.place(x= 50, y= 60)
