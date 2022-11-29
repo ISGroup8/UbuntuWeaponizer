@@ -20,7 +20,7 @@ def install_apps (l):
     if install_apt != 'apt install -y':
         os.system(install_apt)
         os.system(f"chown -R {USER}:{USER} {HOME}/tools")
-
+    print(os.system("figlet Instalado"))
 
 def system_update ():
     os.system('apt update -y')

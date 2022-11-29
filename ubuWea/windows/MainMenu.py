@@ -22,7 +22,7 @@ class App:
 
         phising = [('setoolkit', valueArray[0]), ('shellpish', valueArray[1]), ('hidden-eye', valueArray[2]), ('ShellPhish', valueArray[3]),
                    ('PyPhisher', valueArray[4])]
-        Web = [('nmap', valueArray[5]), ('Burpsuite', valueArray[6]), ('fuff', valueArray[7]), ('wpscan', valueArray[14]), ('sqlmap', valueArray[15]), ('rustscan', valueArray[17])]
+        Web = [('nmap', valueArray[5]), ('Burpsuite', valueArray[6]), ('ffuf', valueArray[7]), ('wpscan', valueArray[14]), ('sqlmap', valueArray[15]), ('rustscan', valueArray[17])]
         Forense = [('Metagoofil', valueArray[8]), ('libimage-exiftool-perl', valueArray[9]), ('wireshark', valueArray[10]), ('Volatility2', valueArray[20]), ('Autopsy', valueArray[25])]
         osint = [('Void', valueArray[11]), ('the_spy_job', valueArray[21]), ('Maltego', valueArray[22]), ('TheHarvester', valueArray[23]), ('Metagoofil', valueArray[24])]
         pwn = [('cutter', valueArray[12]), ('pwntools', valueArray[13]), ('gdb', valueArray[16]), ('ghidra', valueArray[18]), ('Radare2', valueArray[19])]
