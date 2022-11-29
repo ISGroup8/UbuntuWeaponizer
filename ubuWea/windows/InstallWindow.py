@@ -2,7 +2,7 @@
 import tkinter as tk
 from tkinter import *
 
-from ubuWea import functions
+import functions
 
 class InstallWindow (tk.Toplevel):
 
@@ -56,8 +56,8 @@ class InstallWindow (tk.Toplevel):
 
             o = not o
 
-        botExit = tk.Button(self, text="Exit", width=10, bg="navajo white",
-                            font=('DejaVu Sans Mono', 10), command=self.destroy)
+        botExit = tk.Button(self, text="Exit and install", width=10, bg="navajo white",
+                            font=('DejaVu Sans Mono', 10), command=lambda: self.exitAndInstall(categories))
         botExit.pack(side=BOTTOM, pady=10)
 
 
@@ -71,7 +71,7 @@ class InstallWindow (tk.Toplevel):
                        cursor="target",  # cursor
                        relief="flat",  # relieve root
                        bd=5)
-        Label(window,text="-- App installed --", font=('DejaVu Sans Mono', 15, "bold"),
+        Label(window,text="-- App added --", font=('DejaVu Sans Mono', 15, "bold"),
               bg="LightSkyBlue2").pack(side=TOP, pady = 25)
 
         for item in categories:
@@ -85,11 +85,23 @@ class InstallWindow (tk.Toplevel):
 
         window.after(2000, lambda :window.destroy())
 
+    
+    def exitAndInstall(self, categories):
+        window = tk.Toplevel(self)
+        window.minsize(200,100)
+        window.title("")
+        window.configure(bg="navajo white",
+                        cursor="target",
+                        relief="flat",
+                        bd=5)
+        Label(window,text="-- Apps are being installed please wait, you will be notified when everything's done.", 
+        font=('DejaVu Sans Mono', 15, "bold"), bg="LightSkyBlue2").pack(side=TOP, pady=25)
 
+        to_install = []
+        for item in categories:
+            for subItem in item[1]:
+                if subItem[1].get():
+                    to_install.append(subItem[0])
+        functions.install_apps(to_install)
 
-
-
-
-
-
-
+        window.after(5000, lambda :window.destroy())

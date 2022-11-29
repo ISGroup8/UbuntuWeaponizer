@@ -3,11 +3,11 @@ from tkinter import ttk
 from tkinter import *
 from ttkwidgets import CheckboxTreeview
 
-from ubuWea.windows.InstallWindow import *
-from ubuWea.windows.UpdateWindow import *
-from ubuWea.windows.UninstallWindow import *
-from ubuWea.windows.InfoWindow import *
-from ubuWea.windows.ContactUsWindow import *
+from InstallWindow import *
+from UpdateWindow import *
+from UninstallWindow import *
+from InfoWindow import *
+from ContactUsWindow import *
 
 class App:
 
@@ -20,15 +20,15 @@ class App:
 
         phising = [('SET', valueArray[0]), ('SocialPhish', valueArray[1]), ('Hidden-Eye', valueArray[2]), ('ShellPhish', valueArray[3]),
                    ('PyPhisher', valueArray[4])]
-        Web = [('Nmap', valueArray[5]), ('BurpSuite', valueArray[6]), ('FFUF', valueArray[7])]
+        Web = [('nmap', valueArray[5]), ('Burpsuite', valueArray[6]), ('FFUF', valueArray[7])]
         Forense = [('Metagoofil', valueArray[8]), ('Exiftool', valueArray[9]), ('Wireshark', valueArray[10])]
         osint = [('Void', valueArray[11])]
-        pwn = [('Void', valueArray[12])]
+        pwn = [('Cutter', valueArray[12]), ('pwntools', valueArray[13])]
         categories = [('Phising', phising), ('Web', Web), ('Forense', Forense), ('OSINT', osint), ('PWN', pwn)]
 
         self.root = root
         self.root.title("Ubuntu Weaponizer")
-        icon = PhotoImage(file='../assets/logo.png')
+        icon = PhotoImage(file='../../assets/logo.png')
         self.root.iconphoto(True, icon)
         Label(text="Welcome to the Weaponizer :)", bg="navajo white", font=('DejaVu Sans Mono', 15)) \
             .pack(side=TOP, pady=10)
