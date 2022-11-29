@@ -14,16 +14,19 @@ class App:
     def __init__(self, root):
         global valueArray, categories, phising, Web, Forence, osint, pwn
 
-        valueArray = []
-        for i in range(20):
+        valueArray, phising, Web, Forense,  osint, pwn = [], [], [], [], [], []
+        for i in range(26):
             valueArray.append(BooleanVar())
+        
 
-        phising = [('SET', valueArray[0]), ('SocialPhish', valueArray[1]), ('Hidden-Eye', valueArray[2]), ('ShellPhish', valueArray[3]),
+
+        phising = [('setoolkit', valueArray[0]), ('shellpish', valueArray[1]), ('hidden-eye', valueArray[2]), ('ShellPhish', valueArray[3]),
                    ('PyPhisher', valueArray[4])]
-        Web = [('nmap', valueArray[5]), ('Burpsuite', valueArray[6]), ('FFUF', valueArray[7])]
-        Forense = [('Metagoofil', valueArray[8]), ('Exiftool', valueArray[9]), ('Wireshark', valueArray[10])]
-        osint = [('Void', valueArray[11])]
-        pwn = [('Cutter', valueArray[12]), ('pwntools', valueArray[13])]
+        Web = [('nmap', valueArray[5]), ('Burpsuite', valueArray[6]), ('fuff', valueArray[7]), ('wpscan', valueArray[14]), ('sqlmap', valueArray[15]), ('rustscan', valueArray[17])]
+        Forense = [('Metagoofil', valueArray[8]), ('libimage-exiftool-perl', valueArray[9]), ('wireshark', valueArray[10]), ('Volatility2', valueArray[20]), ('Autopsy', valueArray[25])]
+        osint = [('Void', valueArray[11]), ('the_spy_job', valueArray[21]), ('Maltego', valueArray[22]), ('TheHarvester', valueArray[23]), ('Metagoofil', valueArray[24])]
+        pwn = [('cutter', valueArray[12]), ('pwntools', valueArray[13]), ('gdb', valueArray[16]), ('ghidra', valueArray[18]), ('Radare2', valueArray[19])]
+
         categories = [('Phising', phising), ('Web', Web), ('Forense', Forense), ('OSINT', osint), ('PWN', pwn)]
 
         self.root = root
