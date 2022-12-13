@@ -9,11 +9,13 @@ from UninstallWindow import *
 from InfoWindow import *
 from ContactUsWindow import *
 from ListOfApps import *
+from colorFormat import *
 
 class App:
 
     def __init__(self, root):
         categories = init_categories()
+        formatos = init_Formats()
         self.root = root
         self.root.title("Ubuntu Weaponizer")
         icon = PhotoImage(file='../../assets/logo.png')
@@ -31,7 +33,7 @@ class App:
 
         # First row
         botInstall = tk.Button(self.root, text= "Install", width= 15, height= 4,bg="LightSkyBlue2",
-                               font=('DejaVu Sans Mono',15), command=lambda: InstallWindow(root,categories) )
+                               font=('DejaVu Sans Mono',15), command=lambda: InstallWindow(root,categories, formatos) )
         botUpt = tk.Button( text="Update", width= 15, height= 4, bg="LightSkyBlue2",
                            font=('DejaVu Sans Mono',15), command=lambda : UpdateWindow(root, categories))
         botInstall.place(x= 50, y= 60)

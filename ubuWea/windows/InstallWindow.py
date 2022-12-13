@@ -6,7 +6,7 @@ import functions
 
 class InstallWindow (tk.Toplevel):
 
-    def __init__(self, root, categories):
+    def __init__(self, root, categories, formatos):
         super().__init__(root)
         self.minsize(500,450)
         self.title("Ubuntu Weaponizer")
@@ -19,7 +19,7 @@ class InstallWindow (tk.Toplevel):
         Label(self, text="Apps.install()", bg="LightSkyBlue2", font=('DejaVu Sans Mono', 15)) \
             .pack(side=TOP, pady=10)
 
-        Label(self, text="../Categories", font=specialF, bg="navajo white").pack(pady=10)
+        Label(self, text="../Categories", font=formatos['specialF'], bg="navajo white").pack(pady=10)
 
         # Scrollbar
         wrapper = LabelFrame(self, bg="AntiqueWhite1")
@@ -50,14 +50,14 @@ class InstallWindow (tk.Toplevel):
         for item in categories:
             if (o):
                 m += 50
-                Label(myframe, text=item[0], font=specialF, bg="navajo white").place(x=l, y=m)
+                Label(myframe, text=item[0], font=formatos['specialF'], bg="navajo white").place(x=l, y=m)
                 #m += 20
             else:
                 n += 50
-                Label(myframe, text=item[0], font=specialF, bg="navajo white").place(x=k, y=n)
+                Label(myframe, text=item[0], font=formatos['specialF'], bg="navajo white").place(x=k, y=n)
                 #n += 20
             for subItem in item[1]:
-                self.checkbox = Checkbutton (myframe, text= subItem[0], font=normalF, bg="AntiqueWhite1",
+                self.checkbox = Checkbutton (myframe, text= subItem[0], font=formatos['normalF'], bg="AntiqueWhite1",
                                              variable= subItem[1], onvalue= True, offvalue= False)
                 if (o):
                     m += 30
@@ -69,16 +69,16 @@ class InstallWindow (tk.Toplevel):
             o = not o
         myframe.configure(height=max(n,m)+50)
         installButton = tk.Button(self, text=".install()", width=10, bg="navajo white",
-                            font=('DejaVu Sans Mono', 10), command=lambda: self.install(categories))
+                            font=formatos['normalF'], command=lambda: self.install(categories, formatos))
         installButton.pack(side=RIGHT, anchor = S, padx=15, pady= 10)
 
         goBackButton = tk.Button(self, text=".goBack()", width=10, bg="dark grey",
-                            font=('DejaVu Sans Mono', 10), command=lambda: self.destroy())
+                            font=formatos['normalF'], command=lambda: self.destroy())
         goBackButton.pack(side=RIGHT, anchor = S, pady= 10)
 
 
 
-    def install(self, categories):
+    def install(self, categories, formatos):
         window = tk.Toplevel(self)
         window.minsize(200,100)
         window.title("")
@@ -87,7 +87,7 @@ class InstallWindow (tk.Toplevel):
                         relief="flat",
                         bd=5)
         Label(window,text="-- Apps are being installed please wait, you will be notified when everything's done.", 
-        font=('DejaVu Sans Mono', 15, "bold"), bg="LightSkyBlue2").pack(side=TOP, pady=25)
+        font=formatos['specialF'], bg="LightSkyBlue2").pack(side=TOP, pady=25)
         listOfApps = ""
         to_install = []
         for item in categories:
