@@ -8,7 +8,7 @@ from tkinter import *
 
 
 class InfoWindow(tk.Toplevel):
-    def __init__(self, root):
+    def __init__(self, root, categories):
         super().__init__(root)
         self.minsize(500, 550)
         self.title("Ubuntu Weaponizer")
@@ -24,15 +24,7 @@ class InfoWindow(tk.Toplevel):
         normalF = Text(font=('DejaVu Sans Mono', 10))
         specialF = Text(font=('DejaVu Sans Mono', 15, "bold"))
 
-        # List of apps
         Label(self, text="--Categories--", font=specialF, bg="navajo white").pack(pady=10)
-        # phising = {'SET': False, 'SocialPhish':False, 'Hidden-Eye':False, 'ShellPhish':False, 'PyPhisher':False}
-        phising = ['SET', 'SocialPhish', 'Hidden-Eye', 'ShellPhish', 'PyPhisher']
-        Web = ['Nmap', 'BurpSuite', 'FFUF', 'RustScan', 'WPSCAN']
-        Forense = ['Autopsy', 'Metagoofil', 'Exiftool', 'Wireshark']
-        osint = ['Void']
-        pwn = ['Void']
-        categories = [('Phising', phising), ('Web', Web), ('Forense', Forense), ('OSINT', osint), ('PWN', pwn)]
 
         # Variables de posición de las apps
         l = 60
