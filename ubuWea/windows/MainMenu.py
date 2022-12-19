@@ -1,8 +1,3 @@
-import tkinter as tk
-from tkinter import ttk
-from tkinter import *
-from ttkwidgets import CheckboxTreeview
-
 from InstallWindow import *
 from UpdateWindow import *
 from UninstallWindow import *
@@ -16,8 +11,8 @@ class App:
     def __init__(self, root):
 
         categories = init_categories()
-        info = init_infoApps()
         formatos = init_Formats()
+        info = init_info()
 
         self.root = root
         self.root.title("Ubuntu Weaponizer")
@@ -45,8 +40,8 @@ class App:
         # Second row
         botDesInst = tk.Button(self.root, text="Uninstall", width= 12, height= 3, bg=formatos['si'], fg=formatos['colorFontN2'],
                                font=formatos['specialF'], command=lambda : UninstallWindow(root, categories, formatos))
-        botInfo = tk.Button(self.root, text="Show apps", width= 12, height= 3, bg=formatos['si'], fg=formatos['colorFontN2'],
-                            font=formatos['specialF'], command=lambda: InfoWindow(root, categories, formatos, info))
+        botInfo = tk.Button(self.root, text="Information", width= 12, height= 3, bg=formatos['si'], fg=formatos['colorFontN2'],
+                            font=formatos['specialF'], command=lambda: InfoWindow(root, info, formatos))
         botDesInst.place(x= 50, y= 190)
         botInfo.place(x= 250, y= 190)
 

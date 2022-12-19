@@ -22,7 +22,7 @@ class ContactWindow(tk.Toplevel):
         Label(self, text="Phone:", font=formatos['specialF'], bg=formatos['fondo1'],fg=formatos['colorFontS']).pack(pady=15)
         Label(self, text="(+34)12-312-31-23", font=formatos['normalF'], bg=formatos['fondo1'],fg=formatos['colorFontN']).pack()
 
-        botExit = tk.Button(self, text="Exit", width=10, bg=formatos['no'],fg=formatos['colorFontN'],
+        botExit = tk.Button(self, text="Go back", width=10, bg=formatos['no'],fg=formatos['colorFontN'],
                             font=formatos['normalF'], command=self.destroy)
         botExit.pack(side=BOTTOM, pady=10)
 
