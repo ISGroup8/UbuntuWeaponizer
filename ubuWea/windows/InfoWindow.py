@@ -111,7 +111,7 @@ class InfoWindow(tk.Toplevel):
             myCanvas.config(yscrollcommand=scrollbar.set)
             myCanvas.bind('<Configure>', lambda e: myCanvas.configure(scrollregion=myCanvas.bbox('all')))
 
-            myframe = Frame(myCanvas, bg=formatos['fondo1'], height=700, width=400, relief=SUNKEN)
+            myframe = Frame(myCanvas, bg=formatos['fondo1'], height=400, width=700, relief=SUNKEN)
 
             myCanvas.create_window((10, 15), window=myframe, anchor=NW, width=700, height=400)
 
