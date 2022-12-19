@@ -8,11 +8,11 @@ def init_categories():
 
     ## valores libres -> 11, 19, 24
     phising = [('SEToolkit', valueArray[0]),
-               ('Hidden Eye', valueArray[2]),
-               ('ShellPhish', valueArray[3]),
+               ('hidden-eye', valueArray[2]),
+               ('shellpish', valueArray[3]),
                ('PyPhisher', valueArray[4])]
 
-    Web = [('Nmap', valueArray[5]),
+    Web = [('nmap', valueArray[5]),
            ('BurpSuite', valueArray[6]),
            ('Ffuf', valueArray[7]),
            ('WPScan', valueArray[14]),

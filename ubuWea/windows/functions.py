@@ -14,27 +14,27 @@ def install_apps (l):
         if item in apt_apps:
             install_apt += ' ' + item
         else:
-            usuario =  os.getenv('USER')
-            os.system(f"./install.sh {usuario} {item}")
+            os.system(f"./install.sh {USER} {item}")
+            print(os.system(f"figlet {item}  Instalado"))
+
+    os.system(f"chown -R {USER}:{USER} {HOME}/tools")
 
     if install_apt != 'apt install -y':
         os.system(install_apt)
-        os.system(f"chown -R {USER}:{USER} {HOME}/tools")
-    print(os.system("figlet Instalado"))
 
-def unInstall_apps (l):
+def uninstall_apps (l):
+
     uninstall_apt = 'apt remove -y'
     for item in l:
         if item in apt_apps:
             uninstall_apt += ' ' + item
         else:
-    #########terminar###############
+            os.system(f"./uninstall.sh {USER} {item}")
+            print(os.system(f"figlet {item}  Desinstalado"))
 
-    if install_apt != 'apt remove -y':
+    if uninstall_apt != 'apt remove -y':
         os.system(uninstall_apt)
-        #############terminar##########
 
-    print(os.system("figlet desinstalado"))
 
 def system_update ():
     os.system('apt update -y')

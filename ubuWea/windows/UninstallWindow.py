@@ -100,9 +100,7 @@ class UninstallWindow(tk.Toplevel):
                 if subItem[1].get():
                     to_install.append(subItem[0])
                     listOfApps += str(subItem[0]) + "\n"
-        ############ Aqui va la función de uninstall ###############
-        #functions.install_apps(to_install)
-        ############################################################
+        functions.uninstall_apps(to_install)
         Label(window, text=listOfApps, font=formatos['specialF'],
               bg=formatos['fondo1'], fg=formatos['colorFontN']).pack(side=TOP, pady=25)
 
