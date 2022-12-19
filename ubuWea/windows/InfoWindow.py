@@ -8,7 +8,7 @@ from tkinter import *
 
 
 class InfoWindow(tk.Toplevel):
-    def __init__(self, root, categories):
+    def __init__(self, root, categories, formatos, info):
         super().__init__(root)
         self.minsize(500, 550)
         self.title("Ubuntu Weaponizer")
@@ -46,7 +46,9 @@ class InfoWindow(tk.Toplevel):
             for subItem in item[1]:
                 if (o):
                     m += 25
-                    Label(self, text=subItem, font= normalF).place(x=l, y = m)
+                    aux1 = Label(self, text=subItem, font= normalF)
+                    aux1.place(x=l, y = m)
+                    aux1.bind("More info", lambda e:open)
                 else:
                     n += 25
                     Label(self, text=subItem, font= normalF).place(x=k, y = n)

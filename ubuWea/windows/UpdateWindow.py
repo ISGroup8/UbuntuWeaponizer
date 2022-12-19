@@ -4,73 +4,93 @@ from tkinter import *
 import functions
 
 class UpdateWindow(tk.Toplevel):
-    def __init__(self, root, categories):
+    def __init__(self, root, categories, formatos):
         super().__init__(root)
-        self.minsize(500,550)
-        self.title("Ubuntu Weaponizer")
+        self.minsize(500, 450)
+        self.title("Ubuntu Weaponizer/Update")
 
-        self.configure(bg="LightSkyBlue2",
-                        cursor="target",  # cursor
-                        relief="flat",  # relieve root
-                        bd=5)
+        self.configure(bg=formatos['fondo1'],
+                       cursor=formatos['cursor'],  # cursor
+                       relief="flat",  # relieve root
+                       bd=5)
 
-        Label(self, text=" Install the things you want :)", bg="LightSkyBlue2", font=('DejaVu Sans Mono', 15)) \
+        Label(self, text="Choose what you want to update...", bg=formatos['fondo1'], font=formatos['specialF'],
+              fg=formatos['colorFontS']) \
             .pack(side=TOP, pady=10)
 
-        normalF = Text(font=('DejaVu Sans Mono', 10))
-        specialF = Text(font=('DejaVu Sans Mono', 15, "bold"))
+        Label(self, text="Applications:", font=formatos['specialF'], bg=formatos['fondo1'], fg=formatos['colorFontS']) \
+            .pack(pady=10)
 
-        # List of apps
-        Label(self, text="--Categories--", font=specialF, bg="navajo white").pack(pady=10)
+        # Scrollbar
+        wrapper = LabelFrame(self, bg=formatos['fondo1'])
+        wrapper.pack(fill="both", expand=YES, padx=10)
+
+        myCanvas = Canvas(wrapper, bg=formatos['fondo1'], width=500, height=300, relief="flat")
+        myCanvas.pack(side=LEFT)
+
+        scrollbar = Scrollbar(wrapper, orient=VERTICAL, command=myCanvas.yview)
+        scrollbar.pack(side=RIGHT, fill=Y)
+
+        myCanvas.config(yscrollcommand=scrollbar.set)
+        myCanvas.bind('<Configure>', lambda e: myCanvas.configure(scrollregion=myCanvas.bbox('all')))
+
+        myframe = Frame(myCanvas, bg=formatos['fondo1'], height=1000, width=1000, relief=SUNKEN)
+
+        myCanvas.create_window((0, 0), window=myframe, anchor=NW)
 
         # Variables de posición de las apps
-        l = 60
-        k = 330
-        m = 60
-        n = 60
+        l = 30
+        k = 310
+        m = -30
+        n = -30
         o = True
 
         # Poner las apps y los checkbox
         for item in categories:
             if (o):
-                m += 40
-                Label(self, text=item[0], font=specialF, bg="navajo white").place(x=l, y=m)
-                m += 20
+                m += 50
+                Label(myframe, text=item[0], font=formatos['specialF'], bg=formatos['fondo1'],
+                      fg=formatos['colorFontS']).place(x=l, y=m)
+                # m += 20
             else:
-                n += 40
-                Label(self, text=item[0], font=specialF, bg="navajo white").place(x=k, y=n)
-                n += 20
+                n += 50
+                Label(myframe, text=item[0], font=formatos['specialF'], bg=formatos['fondo1'],
+                      fg=formatos['colorFontS']).place(x=k, y=n)
+                # n += 20
             for subItem in item[1]:
-                self.checkbox = Checkbutton (self, text= subItem[0], font=normalF,
-                                             variable= subItem[1], onvalue= True, offvalue= False)
+                self.checkbox = Checkbutton(myframe, text=subItem[0], font=formatos['normalF'], bg=formatos['fondo1'],
+                                            fg=formatos['colorFontN'],
+                                            variable=subItem[1], onvalue=True, offvalue=False,
+                                            selectcolor=formatos['fondo1'])
                 if (o):
-                    m += 25
+                    m += 30
                     self.checkbox.place(x=l, y=m)
                 else:
-                    n += 25
+                    n += 30
                     self.checkbox.place(x=k, y=n)
 
             o = not o
+        myframe.configure(height=max(n, m) + 50)
+        updateButton = tk.Button(self, text="Update", width=10, bg=formatos['si'], fg=formatos['colorFontN2'],
+                                  font=formatos['normalF'], command=lambda: self.install(categories, formatos))
+        updateButton.pack(side=RIGHT, anchor=S, padx=15, pady=10)
 
-        installButton = tk.Button(self, text="Install", width=10, bg="navajo white",
-                            font=('DejaVu Sans Mono', 10), command=lambda: self.install(categories))
-        installButton.place(x=10,y=20)
+        goBackButton = tk.Button(self, text="Go back", width=10, bg=formatos['no'], fg=formatos['colorFontN'],
+                                 font=formatos['normalF'], command=lambda: self.destroy())
+        goBackButton.pack(side=RIGHT, anchor=S, pady=10)
 
-        goBackButton = tk.Button(self, text="Go Back", width=10, bg="navajo white",
-                            font=('DejaVu Sans Mono', 10), command=lambda: self.destroy())
-        goBackButton.pack(side=BOTTOM, ipadx=30)
-
-
-    def install(self, categories):
+    def install(self, categories, formatos):
         window = tk.Toplevel(self)
-        window.minsize(200,100)
-        window.title("")
-        window.configure(bg="navajo white",
-                        cursor="target",
-                        relief="flat",
-                        bd=5)
-        Label(window,text="-- Apps are being installed please wait, you will be notified when everything's done.",
-        font=('DejaVu Sans Mono', 15, "bold"), bg="LightSkyBlue2").pack(side=TOP, pady=25)
+        window.minsize(200, 100)
+        window.title("Updating...")
+        window.configure(bg=formatos['fondo1'],
+                         cursor=formatos['cursor'],
+                         relief="flat",
+                         bd=5)
+        Label(window,
+              text="--> The applicactions are being updated, please wait...\n\nThese are the apps that are going to be updated:",
+              font=formatos['specialF'],
+              bg=formatos['fondo1'], fg=formatos['colorFontS']).pack(side=TOP, pady=25)
         listOfApps = ""
         to_install = []
         for item in categories:
@@ -79,7 +99,7 @@ class UpdateWindow(tk.Toplevel):
                     to_install.append(subItem[0])
                     listOfApps += str(subItem[0]) + "\n"
         functions.install_apps(to_install)
-        Label(window, text=listOfApps, font=('DejaVu Sans Mono', 15, "bold"),
-              bg="LightSkyBlue2").pack(side=TOP, pady=25)
+        Label(window, text=listOfApps, font=formatos['specialF'],
+              bg=formatos['fondo1'], fg=formatos['colorFontN']).pack(side=TOP, pady=25)
 
         window.after(5000, lambda: window.destroy())
