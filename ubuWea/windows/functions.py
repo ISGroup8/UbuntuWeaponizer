@@ -22,6 +22,20 @@ def install_apps (l):
         os.system(f"chown -R {USER}:{USER} {HOME}/tools")
     print(os.system("figlet Instalado"))
 
+def unInstall_apps (l):
+    uninstall_apt = 'apt remove -y'
+    for item in l:
+        if item in apt_apps:
+            uninstall_apt += ' ' + item
+        else:
+    #########terminar###############
+
+    if install_apt != 'apt remove -y':
+        os.system(uninstall_apt)
+        #############terminar##########
+
+    print(os.system("figlet desinstalado"))
+
 def system_update ():
     os.system('apt update -y')
 

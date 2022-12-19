@@ -8,8 +8,9 @@ cd $installpath
 function setoolkit() {
     git clone https://github.com/trustedsec/social-engineer-toolkit.git
     chown -R $user:$user social-engineer-toolkit
+    mv setoolkit $installpath
     apt-get install python3 python3-pip python3-dev -y
-    cd SocialFish
+    cd $installpath/setoolkit
     sudo -u $user 'python3 -m pip install -r requirements.txt'
 }
 
@@ -21,13 +22,15 @@ function hidden-eye {
 
 function shellpish { 
     git clone https://github.com/suljot/shellphish.git
-    chown -R $user:$user shellphish
+    mv shellphish $installpath
+    chown -R $user:$user $installpath/shellphish
 }
     
 function PyPhisher { 
     apt install python3 php openssh-client -y
     git clone https://github.com/KasRoudra/PyPhisher
     chown +R $user:$user PyPhisher
+    mv PyPhisher $installpath
     cd $installpath/PyPhisher
     pip3 install -r files/requirements.txt
 }
